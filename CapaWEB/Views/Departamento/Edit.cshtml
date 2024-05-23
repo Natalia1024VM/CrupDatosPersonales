@@ -1,0 +1,68 @@
+﻿@model CapaWEB.ViewModels.DepartamentoViewModel
+@{
+    ViewBag.Title = "Departamento";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.idPais)
+
+    <label class="MensajeError">@Html.ValidationSummary(true)</label>
+
+    <section id="formulario">
+        <label style="align-items; margin: auto 350px;" class="titulo">Modificar Departamento</label>
+        <div style="margin-right:35px">
+            <div>
+                @Html.LabelFor(model => model.nombrePais, new { @class = "label" })
+            </div>
+            <div>
+                @Html.TextBoxFor(model => model.nombrePais, new { @class = "cuadrotexto", @readonly = true })
+            </div>
+            <div class="MensajeError">
+                @Html.ValidationMessageFor(model => model.nombrePais, null, new { @class = "control-label", @size = "80" })
+            </div>
+        </div>
+        <table>
+            <tr></tr>
+            <tr>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.idDepartamento, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.idDepartamento, new { @class = "cuadrotexto", @readonly = true })
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.idDepartamento, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.nombre, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.nombre, new { @class = "cuadrotexto" })
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.nombre, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+
+        </table>
+    </section>
+    <br />
+
+    <button class="btn btn-primary" name="consulta" value="Regresar" type="submit">Regresar</button>
+    <button class="btn btn-primary" name="consulta" value="Modificar" type="submit">Modificar</button>
+
+    <br />
+    <br />
+    <br />
+
+}

@@ -1,0 +1,119 @@
+﻿@model CapaWEB.ViewModels.PersonaViewModel
+@{
+    ViewBag.Title = "Personas";
+}
+
+@using (Html.BeginForm())
+{
+    <label class="MensajeError">@Html.ValidationSummary(true)</label>
+    @Html.HiddenFor(model => model.idPersona)
+
+    <section id="formulario">
+        <label style="align-items; margin: auto 400px;" class="titulo">ELIMINAR PERSONA</label>
+        <br />
+        <br />
+        <table>
+            <tr></tr>
+            <tr>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.nombre, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.nombre, new { @class = "cuadrotexto", @readonly = true })
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.nombre, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.telefono, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.telefono, new { @class = "cuadrotexto" , @readonly = true})
+
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.telefono, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.direccion, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.direccion, new { @class = "cuadrotexto", @readonly = true })
+
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.direccion, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.IdPais, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.DropDownList("IdPais", null, String.Empty, new { @class = "cuadroLista", @disabled = "disabled" })
+
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.IdPais, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.IdDepartamento, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.DropDownList("IdDepartamento", null, String.Empty, new { @class = "cuadroLista", @disabled = "disabled" })
+
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.IdDepartamento, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.IdCiudad, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.DropDownList("IdCiudad", null, String.Empty, new { @class = "cuadroLista", @disabled = "disabled" })
+
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.IdCiudad, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+
+        </table>
+        <br />
+        <br />
+        <button class="btn btn-primary" name="consulta" value="Regresar" type="submit">Regresar</button>
+        <button class="btn btn-primary" name="consulta" value="Eliminar" type="submit">Eliminar Persona</button>
+    </section>
+
+    <br />
+    <br />
+
+
+}

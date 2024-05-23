@@ -1,0 +1,132 @@
+﻿@model CapaWEB.ViewModels.DepartamentoViewModel
+@{
+    ViewBag.Title = "Departamentos";
+}
+
+@using (Html.BeginForm())
+{
+    <label class="MensajeError">@Html.ValidationSummary(true)</label>
+    @Html.HiddenFor(model => model.idPais)
+
+    <section id="formulario">
+        <label style="align-items; margin: auto 400px;" class="titulo">DEPARTAMENTOS</label>
+        <div style="margin-right:35px">
+            <div>
+                @Html.LabelFor(model => model.nombrePais, new { @class = "label" })
+            </div>
+            <div>
+                @Html.TextBoxFor(model => model.nombrePais, new { @class = "cuadrotexto",@readonly = true })
+            </div>
+            <div class="MensajeError">
+                @Html.ValidationMessageFor(model => model.nombrePais, null, new { @class = "control-label", @size = "80" })
+            </div>
+        </div>
+
+        <br />
+        <table>
+            <tr></tr>
+            <tr>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.idDepartamento, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.idDepartamento, new { @class = "cuadrotexto" })
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.idDepartamento, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.nombre, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.nombre, new { @class = "cuadrotexto" })
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.nombre, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+                
+                   
+            </tr>
+
+        </table>
+        <br />
+        <br />
+        <button class="btn btn-primary" name="consulta" value="Adicionar" type="submit">Agregar Departamento</button>
+
+    </section>
+    <br />
+    <br />
+    <br />
+
+    <section id="tabla">
+        <div>
+            <label class="SUbtitulo">Lista Departamentos</label>
+            <br />
+            <table class="table">
+                <tr>
+                    <th>
+                        Código Departamento
+                    </th>
+                    <th>
+                        Nombre Departamento
+                    </th>
+                    <th>
+                        Activo/Inactivo
+                    </th>
+                    @if (Model.lista.Count > 0)
+                    {
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    }
+                </tr>
+                @if (Model.lista.Count > 0)
+                {
+                    @foreach (var item in Model.lista)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdDepartamento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NombreDepartamento)
+                            </td>
+                            @if (item.Activo == true)
+                            {
+                                <td>Activo</td>
+                                <td>
+                                    @Html.ActionLink("Modificar", "Edit", new { idDep = item.IdDepartamento, idpais = Model.idPais })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Eliminar", "Delete", new { idDep = item.IdDepartamento, idpais = Model.idPais })
+                                </td>
+                                <td>
+                                   @Html.ActionLink("Ciudades", "Index", "Ciudad", new { idDep = item.IdDepartamento, idPais = Model.idPais })
+                                </td>
+                            }
+                            else
+                            {
+                                <td>Inactivo</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            }
+                           
+
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </section>
+
+
+}

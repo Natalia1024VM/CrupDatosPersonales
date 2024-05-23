@@ -1,0 +1,56 @@
+﻿@model CapaWEB.ViewModels.PaisViewModel
+@{
+    ViewBag.Title = "Pais";
+}
+
+@using (Html.BeginForm())
+{
+    <label class="MensajeError">@Html.ValidationSummary(true)</label>
+
+    <section id="formulario">
+        <label style="align-items; margin: auto 350px;" class="titulo">Modificar Pais</label>
+
+        <table>
+            <tr></tr>
+            <tr>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.IdPais , new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.IdPais, new { @class = "cuadrotexto" , @readonly= true})
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.IdPais, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.NombrePais, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.NombrePais, new { @class = "cuadrotexto" })
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.NombrePais, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+               
+            </tr>
+
+        </table>
+    </section>
+    <br />
+
+    <button class="btn btn-primary" name="consulta" value="Regresar" type="submit">Regresar</button>
+    <button class="btn btn-primary" name="consulta" value="Modificar" type="submit">Modificar</button>
+
+    <br />
+    <br />
+    <br />
+
+}

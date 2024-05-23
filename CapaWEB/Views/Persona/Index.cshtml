@@ -1,0 +1,283 @@
+﻿@model CapaWEB.ViewModels.PersonaViewModel
+@{
+    ViewBag.Title = "Personas";
+}
+
+@using (Html.BeginForm())
+{
+    <label class="MensajeError">@Html.ValidationSummary(true)</label>
+
+    <section id="formulario">
+        <label style="align-items; margin: auto 400px;" class="titulo">PERSONAS</label>
+
+        <div style="margin-right:35px">
+            <div>
+                @Html.LabelFor(model => model.nombreBuscar, new { @class = "label" })
+            </div>
+            <div>
+                @Html.TextBoxFor(model => model.nombreBuscar, new { @class = "cuadrotexto" })
+            </div>
+            <div class="MensajeError">
+                @Html.ValidationMessageFor(model => model.nombreBuscar, null, new { @class = "control-label", @size = "80" })
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <button class="btn btn-primary" name="consulta" value="Consultar" type="submit">Consultar Persona</button>
+
+        <br />
+        <br />
+        <a class="btn btn-primary" onclick="MostarDivAgregar()">> Adicionar Nueva Persona</a>
+        <br />
+        <br />
+        <div id="TablaAgregar" style="display: none">
+            <table>
+                <tr></tr>
+                <tr>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.nombre, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(model => model.nombre, new { @class = "cuadrotexto" })
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.nombre, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.telefono, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(model => model.telefono, new { @class = "cuadrotexto" })
+
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.telefono, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.direccion, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(model => model.direccion, new { @class = "cuadrotexto" })
+
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.direccion, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.IdPais, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.DropDownList("IdPais", null, String.Empty, new { @class = "cuadroLista" })
+
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.IdPais, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.IdDepartamento, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.DropDownList("IdDepartamento", null, String.Empty, new { @class = "cuadroLista" })
+
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.IdDepartamento, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.IdCiudad, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.DropDownList("IdCiudad", null, String.Empty, new { @class = "cuadroLista" })
+
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.IdCiudad, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+
+            </table>
+            <br />
+            <br />
+            <button class="btn btn-primary" name="consulta" value="Adicionar" type="submit">Agregar Persona</button>
+        </div>
+    </section>
+
+    <br />
+    <br />
+
+    <section id="tabla">
+        <div>
+            <label class="SUbtitulo">Lista Personas</label>
+            <br />
+            <table class="table">
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Teléfono
+                    </th>
+                    <th>
+                        Dirección
+                    </th>
+                    <th>
+                        País
+                    </th>
+                    <th>
+                        Departamento
+                    </th>
+                    <th>
+                        Ciudad
+                    </th>
+                    @if (Model.lista.Count > 0)
+                    {
+                        <th></th>
+                        <th></th>
+                    }
+                </tr>
+                @if (Model.lista.Count > 0)
+                {
+                    @foreach (var item in Model.lista)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.telefono)
+                            </td>
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.direccion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Pais)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Departamento)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Ciudad)
+                            </td>
+
+                            
+                            <td>
+                                @Html.ActionLink("Modificar", "Edit", new { id = item.Id })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </section>
+
+
+}
+
+@section Scripts 
+{
+<script type="text/javascript">
+    function MostarDivAgregar() {
+        element = document.getElementById('TablaAgregar');
+        estado = element.style.display;
+        if (estado == 'none') {
+            element.style.display = 'block'
+        } else {
+            element.style.display = 'none';
+        }
+
+    }
+</script>
+
+    @* <script type="text/javascript">
+        $(function () {
+            $('#IdPais').on('change', function () {
+                var DepDropdown = $('#IdDepartamento');
+
+                var idPais = $(this).val();
+                
+
+                DepDropdown.empty();
+                var state = $(this).val();
+                if (state.length > 0) {
+                    console.log("Inicia el llamado")
+                    $.getJSON('@Url.Action("GetDepartamento")', { state: idPais }, function (data) {
+
+                        $.each(data, function (i, item) {
+                        });
+                    };
+                }
+
+            });
+        })
+    </script> *@
+    <script type="text/javascript">
+        $(function () {
+            $('#IdPais').on('change', function () {
+                var pais = $(this).val();
+                var DepDropdown = $('#IdDepartamento');
+                DepDropdown.empty();
+
+                if (pais.length > 0) {
+                    $.getJSON('@Url.Action("GetDepartamento")', { state: pais }, function (data) {
+                        $.each(data, function (i, item) {
+                            DepDropdown.append('<option value="' + item.idDepartamento + '" >' + item.nombreDepartamento + '</option>');
+                        });
+                    });
+                };
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#IdDepartamento').on('change', function () {
+                var pais = $('#IdPais').val();
+                var dep = $(this).val();
+                var ciuDropdown = $('#IdCiudad');
+                ciuDropdown.empty();
+                if (dep.length > 0) {
+                    $.getJSON('@Url.Action("GetCiudades")', { state: dep, pais: pais }, function (data) {
+                        $.each(data, function (i, item) {
+                            console.log(item)
+                            ciuDropdown.append('<option value="' + item.idCiudad + '" >' + item.nombreCiudad + '</option>');
+                        });
+                    });
+                };
+            });
+        });
+    </script>
+}

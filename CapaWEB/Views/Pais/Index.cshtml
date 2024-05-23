@@ -1,0 +1,118 @@
+﻿@model CapaWEB.ViewModels.PaisViewModel
+@{
+    ViewBag.Title = "Pais";
+}
+
+@using (Html.BeginForm())
+{
+    <label class="MensajeError">@Html.ValidationSummary(true)</label>
+
+    <section id="formulario">
+        <label style="align-items; margin: auto 400px;" class="titulo">PAISES</label>
+
+        <br />
+        <table>
+            <tr></tr>
+            <tr>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.NombrePais, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.NombrePais, new { @class = "cuadrotexto" })
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.NombrePais, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div style="margin-right:35px">
+                        <div>
+                            @Html.LabelFor(model => model.IdPais, new { @class = "label" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(model => model.IdPais, new { @class = "cuadrotexto" })
+                        </div>
+                        <div class="MensajeError">
+                            @Html.ValidationMessageFor(model => model.IdPais, null, new { @class = "control-label", @size = "80" })
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+
+        </table>
+        <br />
+        <br />
+        <button class="btn btn-primary" name="consulta" value="Adicionar" type="submit">Agregar Pais</button>
+
+    </section>
+    <br />
+    <br />
+    <br />
+
+    <section id="tabla">
+        <div>
+            <label class="SUbtitulo">Lista Pais</label>
+            <br />
+            <table class="table">
+                <tr>
+                    <th>
+                        Código Pais
+                    </th>
+                    <th>
+                        Nombre Pais
+                    </th>
+                    <th>
+                        Activo/Inactivo
+                    </th>
+                    @if (Model.lista.Count > 0)
+                    {
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    }
+                </tr>
+                @if (Model.lista.Count > 0)
+                {
+                    @foreach (var item in Model.lista)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.idPais)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NombrePais)
+                            </td>
+                            @if(item.Activo == true)
+                            {
+                                <td>Activo</td>
+                                <td>
+                                    @Html.ActionLink("Modificar", "Edit", new { idPais = item.idPais })
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Eliminar", "Delete", new { idPais = item.idPais })
+                                </td>
+                                <td>
+                                   @Html.ActionLink("Departamentos", "Index", "Departamento", new { idPais = item.idPais })
+                                </td>
+                            }
+                            else
+                            {
+                                <td>Inactivo</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            }
+                            
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </section>
+
+
+}

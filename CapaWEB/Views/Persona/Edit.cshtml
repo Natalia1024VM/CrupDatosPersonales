@@ -1,0 +1,171 @@
+﻿@model CapaWEB.ViewModels.PersonaViewModel
+@{
+    ViewBag.Title = "Personas";
+}
+
+@using (Html.BeginForm())
+{
+    <label class="MensajeError">@Html.ValidationSummary(true)</label>
+    @Html.HiddenFor(model => model.idPersona)
+
+    <section id="formulario">
+        <label style="align-items; margin: auto 400px;" class="titulo">EDITAR PERSONA</label>
+        <br />
+        <br />
+            <table>
+                <tr></tr>
+                <tr>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.nombre, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(model => model.nombre, new { @class = "cuadrotexto" })
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.nombre, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.telefono, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(model => model.telefono, new { @class = "cuadrotexto" })
+
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.telefono, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.direccion, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(model => model.direccion, new { @class = "cuadrotexto" })
+
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.direccion, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.IdPais, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.DropDownList("IdPais", null, String.Empty, new { @class = "cuadroLista" })
+
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.IdPais, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.IdDepartamento, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.DropDownList("IdDepartamento", null, String.Empty, new { @class = "cuadroLista" })
+
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.IdDepartamento, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-right:35px">
+                            <div>
+                                @Html.LabelFor(model => model.IdCiudad, new { @class = "label" })
+                            </div>
+                            <div>
+                                @Html.DropDownList("IdCiudad", null, String.Empty, new { @class = "cuadroLista" })
+
+                            </div>
+                            <div class="MensajeError">
+                                @Html.ValidationMessageFor(model => model.IdCiudad, null, new { @class = "control-label", @size = "80" })
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+
+            </table>
+            <br />
+            <br />
+            <button class="btn btn-primary" name="consulta" value="Regresar" type="submit">Regresar</button>
+            <button class="btn btn-primary" name="consulta" value="Modificar" type="submit">Modificar Persona</button>
+    </section>
+
+    <br />
+    <br />
+
+
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function MostarDivAgregar() {
+            element = document.getElementById('TablaAgregar');
+            estado = element.style.display;
+            if (estado == 'none') {
+                element.style.display = 'block'
+            } else {
+                element.style.display = 'none';
+            }
+
+        }
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('#IdPais').on('change', function () {
+                var pais = $(this).val();
+                var DepDropdown = $('#IdDepartamento');
+                DepDropdown.empty();
+
+                if (pais.length > 0) {
+                    $.getJSON('@Url.Action("GetDepartamento")', { state: pais }, function (data) {
+                        $.each(data, function (i, item) {
+                            DepDropdown.append('<option value="' + item.idDepartamento + '" >' + item.nombreDepartamento + '</option>');
+                        });
+                    });
+                };
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#IdDepartamento').on('change', function () {
+                var pais = $('#IdPais').val();
+                var dep = $(this).val();
+                var ciuDropdown = $('#IdCiudad');
+                ciuDropdown.empty();
+                if (dep.length > 0) {
+                    $.getJSON('@Url.Action("GetCiudades")', { state: dep, pais: pais }, function (data) {
+                        $.each(data, function (i, item) {
+                            console.log(item)
+                            ciuDropdown.append('<option value="' + item.idCiudad + '" >' + item.nombreCiudad + '</option>');
+                        });
+                    });
+                };
+            });
+        });
+    </script>
+}

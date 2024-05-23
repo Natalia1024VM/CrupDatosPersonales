@@ -1,0 +1,102 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+.btn {
+    font: 15px Poppins;
+    color: #ffffff;
+    background: #2c6f6f;
+    border-style: Solid;
+    border-color: #0078C3;
+    border-color: rgba(0, 120, 195, 1);
+    border-width: 1px;
+    outline: 0px;
+}
+
+.label {
+    font: 15px Poppins;
+}
+
+.cuadrotexto {
+    width: 230px;
+    padding: 6px 5px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 8px;
+}
+
+.cuadroLista {
+    width: 230px;
+    padding: 6px 5px;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 8px;
+}
+
+.titulo {
+    font-family: Poppins;
+    font-size: 30px;
+    font-weight: 500;
+    color: #757C7F;
+    color: #0f2033;
+}
+
+
+.SUbtitulo {
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 500;
+    color: #757C7F;
+    color: #0f2033;
+}
+
+.MensajeError {
+    font: 15px Poppins;
+    color: #ff0000
+}
+
+
+
+table {
+    border-collapse: collapse;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+
+td {
+    display: table-cell;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    font: 15px Poppins;
+}
+
+th {
+    font: 15px Poppins;
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    border-bottom: 2px solid #dee2e6;
+}

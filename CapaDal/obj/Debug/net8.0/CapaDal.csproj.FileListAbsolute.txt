@@ -1,0 +1,14 @@
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\bin\Debug\net8.0\CapaDal.deps.json
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\bin\Debug\net8.0\CapaDal.runtimeconfig.json
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\bin\Debug\net8.0\CapaDal.dll
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\bin\Debug\net8.0\CapaDal.pdb
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\obj\Debug\net8.0\CapaDal.csproj.AssemblyReference.cache
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\obj\Debug\net8.0\CapaDal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\obj\Debug\net8.0\CapaDal.AssemblyInfoInputs.cache
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\obj\Debug\net8.0\CapaDal.AssemblyInfo.cs
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\obj\Debug\net8.0\CapaDal.csproj.CoreCompileInputs.cache
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\obj\Debug\net8.0\CapaDal.dll
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\obj\Debug\net8.0\refint\CapaDal.dll
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\obj\Debug\net8.0\CapaDal.pdb
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\obj\Debug\net8.0\CapaDal.genruntimeconfig.cache
+C:\Users\ANDRES\Documents\Natalia\PruebaCoink\CapaDal\obj\Debug\net8.0\ref\CapaDal.dll
